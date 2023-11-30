@@ -1,0 +1,31 @@
+En cuanto a elementos del sitio web hay:
+    - Un menú de navegación con enlaces a los distintos html de la web
+    - Un header con un h1 que se mantiene en todos los archivos
+    - Una zona principal (main)
+    - Una section
+    - Un footer
+En cada html hay distintos elementos dentro del main, section y footer.
+En el índice hay varias listas, en el de aficiones hay un vídeo, en el de
+series hay varios h3 y varias imágenes a modo de podio y en el de música 
+hay también varios h3 e imágenes.
+
+En cuanto a la disposición:
+    - El índice y el de aficiones comparten un mismo layout con la section 
+    situada a la derecha con un h2 y una imagen.
+    - El de series y el de música tiene otro layout, no idéntico, pero
+    similar, con la section debajo del main y encima del footer.
+
+En cuanto al contenido de los documentos:
+    - El índice contiene información personal y básica sobre mí.
+    - El de aficiones contiene mis hobbies y mis pasatiempos favoritos.
+    - El de series contiene mis tres series favoritas con una breve descripción de cada una.
+    - El de música contiene 4 de mis grupos o cantantes favoritos.
+
+En cuanto a módulos CSS utilizados:
+    - CSS Color Level 3
+    - Selectors Level 3
+    - CSS Fonts Level 3
+    - CSS Box Model Level 3
+    - CSS Backgrounds and Borders Level 3
+    - CSS Flexible Box Layout Level 1
+    - CSS Grid
