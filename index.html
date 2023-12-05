@@ -1,76 +1,132 @@
 <!DOCTYPE HTML>
 
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 
 	<!--Metadatos de los documentos HTML5-->
-	<meta name ="author" content ="Jorge López Peláez">
-	<meta name ="description" content ="Descripción general">
-	<meta name ="keywords" content ="personal, foto, vídeo, descripción, contacto, Jorge">
+	<meta name="author" content="Jorge López Peláez">
+	<meta name="description" content="Descripción general">
+	<meta name="keywords" content="personal, foto, vídeo, descripción, contacto, Jorge">
 	<!--Definición de la ventana gráfica-->
-	<meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Jorge López - ¿quién soy?</title>
 
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css">
 	<link rel="stylesheet" type="text/css" href="estilo/layout.css">
 
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 	<script type="text/javascript">
-		(function(c,l,a,r,i,t,y){
-			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		(function (c, l, a, r, i, t, y) {
+			c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+			t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+			y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
 		})(window, document, "clarity", "script", "jyqnw7jc0h"); 
 	</script>
 </head>
 
+<script>
+	function search() {
+		var terminoBusqueda = $('#searchInput').val().toLowerCase()
+		// Cargar el mapa del sitio desde el archivo XML
+		$.ajax({
+			type: "GET",
+			url: "sitemap.xml",
+			dataType: "xml",
+			success: function (xml) {
+				// Recorrer cada página en el mapa del sitio
+				$(xml).find('page').each(function () {
+					var pageUrl = $(this).attr('url')
+					// Realizar una búsqueda en la página
+					$.ajax({
+						type: "GET",
+						url: pageUrl,
+						success: function (pageContent) {
+							// Realizar la búsqueda en el contenido de la página
+							// Puedes adaptar esto según tus necesidades
+							if (pageContent.includes(terminoBusqueda)) {
+								console.log("Coincidencia encontrada en la página: " + pageUrl)
+								// console.log(window.location.href)
+								// console.log(pageUrl)
+								newUrl = "http://localhost" + pageUrl
+								// console.log(newUrl)
+								window.location.href = newUrl
+							}
+						},
+						error: function (xhr, status, error) {
+							console.error("Error al cargar la página: " + pageUrl)
+						}
+					});
+				});
+			},
+			error: function (xhr, status, error) {
+				console.error("Error al cargar el mapa del sitio: " + error)
+			}
+		});
+	}
+
+	function displayResults(results) {
+		results.each(function () {
+			var title = $(this).find('title').text()
+			var content = $(this).find('content').text()
+			$('#results').append('<div><strong>' + title + '</strong>: ' + content + '</div>')
+		});
+	}
+</script>
+
 <body>
+	<header>
+		<h1>Jorge López Peláez</h1>
+		<div class="buscador">
+			<input type="text" id="searchInput" placeholder="Buscar...">
+			<button onclick="search()">Buscar</button>
+		</div>
+	</header>
+
 	<nav>
 		<a href="index.html" accesskey="I" tabindex="1">Índice</a>
 		<a href="aficiones.html" accesskey="A" tabindex="2">Aficiones</a>
-		<a href="series.html" accesskey="S" tabindex="3">Series</a>
-		<a href="musica.html" accesskey="M" tabindex="4">Música</a>
 	</nav>
-
-	<header>
-		<h1>Jorge López Peláez</h1>
-	</header>
 
 	<main>
 		<h2>¿Quién soy?</h2>
 		<p>
 			Nací en Segovia el 16 de agosto de 2001, pero llevo viviendo en Oviedo desde los 3 años de edad.
-			Soy un alumno de primer curso del Máster en Ingeniería Web (<a href="https://miw.uniovi.es/" 
-			title="enlace al sitio web oficial del MIW de la Universidad de Oviedo">MIW</a>) de la Universidad de Oviedo. 
+			Soy un alumno de primer curso del Máster en Ingeniería Web (<a href="https://miw.uniovi.es/"
+				title="enlace al sitio web oficial del MIW de la Universidad de Oviedo">MIW</a>) de la Universidad de
+			Oviedo.
 		</p>
 
 		<h2>¿Qué más hay sobre mi?</h2>
 		<p>
 			Estudié desde los 3 años en el <a href="https://maristas-oviedo.org/" title="enlace a web oficial del Colegio
-			Auseva Maristas">Colegio Auseva Maristas</a>, en Oviedo. Al terminar los estudios de Bachillerato, comencé el 
+			Auseva Maristas">Colegio Auseva Maristas</a>, en Oviedo. Al terminar los estudios de Bachillerato, comencé el
 			grado de Ingeniería del Software de la Universidad de Oviedo.
 		</p>
 		<p>
-			En cuanto a <a href="aficiones.html" title="enlace a la sección de mi web sobre mis aficiones">aficiones</a>, 
+			En cuanto a <a href="aficiones.html"
+				title="enlace a la sección de mi web sobre mis aficiones">aficiones</a>,
 			me gusta ver deporte, entre ellos:
 		</p>
-			<ul>
-				<li>Fórmula 1</li>
-				<li>Fútbol</li>
-				<li>Tenis</li>
-				<li>Balonmano</li>
-			</ul>
+		<ul>
+			<li>Fórmula 1</li>
+			<li>Fútbol</li>
+			<li>Tenis</li>
+			<li>Balonmano</li>
+		</ul>
 		<p>
 			Además de verlos también me gusta jugar:
 		</p>
-			<ul>
-				<li>Fútbol</li>
-				<li>Tenis</li>
-				<li>Balonmano</li>
-				<li>Baloncesto</li>
-				<li>Pádel</li>
-			</ul>
+		<ul>
+			<li>Fútbol</li>
+			<li>Tenis</li>
+			<li>Balonmano</li>
+			<li>Baloncesto</li>
+			<li>Pádel</li>
+		</ul>
 		<p>
 			Por último, también me gusta jugar a videojuegos, salir con mis amigos o hacer planes con mi familia.
 		</p>
@@ -85,9 +141,11 @@
 	<footer>
 		<h2>Contáctame</h2>
 		<p>
-			Si deseas contactar conmigo puedes hacerlo por <a href="https://www.linkedin.com/in/jorge-l%C3%B3pez-pel%C3%A1ez-954b95253/" 
-			title="enlace al linkedin de Jorge">LinkedIn</a>
+			Si deseas contactar conmigo puedes hacerlo por <a
+				href="https://www.linkedin.com/in/jorge-l%C3%B3pez-pel%C3%A1ez-954b95253/"
+				title="enlace al linkedin de Jorge">LinkedIn</a>
 		</p>
 	</footer>
 </body>
+
 </html>

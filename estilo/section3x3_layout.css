@@ -1,8 +1,8 @@
 /* Especificidad: 001 */
 body {
 	display: grid;
-	grid-template-areas: 	'nav 	'
-							'head	'
+	grid-template-areas: 	'head 	'
+							'nav	'
 							'main	'
 							'section'
 							'footer	';	

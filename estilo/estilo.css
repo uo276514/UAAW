@@ -8,18 +8,42 @@ body {
 
 /* Especificidad: 001 */
 nav {
-	color: rgb(36, 25, 59);;
-	background-color: #fff;
+	color: #fff;
+	background-color: rgb(36, 25, 59);
 
-	padding: 0.5em;
-	font-size: 1.2em;
-	border-radius: 2em;
+	display: flex;
+	gap: 1.5rem;
+	margin-top: 1rem;
+	font-size: 1.2rem;
+	border-radius: 2rem;
+}
+
+/* Especificidad: 002 */
+nav a {
+	color: #fff;
+	background-color: rgb(36, 25, 59);
 }
 
 /* Especificidad: 001 */
 a {
 	color: rgb(36, 25, 59);
 	background-color: #fff;
+	text-decoration: none;
+}
+
+/* Especificidad: 011 */
+a:hover {
+	text-decoration: underline;
+}
+
+/* Especificidad: 001 */
+div {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+    padding: 1rem;
+    border-top: 1px solid #ccc;
 }
 
 /* Especificidad: 001 */
