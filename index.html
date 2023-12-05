@@ -30,7 +30,7 @@
 
 <script>
 	function search() {
-		var terminoBusqueda = $('#searchInput').val().toLowerCase()
+		var terminoBusqueda = $('#searchInput').val()
 		// Cargar el mapa del sitio desde el archivo XML
 		$.ajax({
 			type: "GET",
@@ -67,14 +67,6 @@
 			}
 		});
 	}
-
-	function displayResults(results) {
-		results.each(function () {
-			var title = $(this).find('title').text()
-			var content = $(this).find('content').text()
-			$('#results').append('<div><strong>' + title + '</strong>: ' + content + '</div>')
-		});
-	}
 </script>
 
 <body>
@@ -102,8 +94,7 @@
 
 		<h2>¿Qué más hay sobre mi?</h2>
 		<p>
-			Estudié desde los 3 años en el <a href="https://maristas-oviedo.org/" title="enlace a web oficial del Colegio
-			Auseva Maristas">Colegio Auseva Maristas</a>, en Oviedo. Al terminar los estudios de Bachillerato, comencé el
+			Estudié desde los 3 años en el Colegio Auseva Maristas, en Oviedo. Al terminar los estudios de Bachillerato, comencé el
 			grado de Ingeniería del Software de la Universidad de Oviedo.
 		</p>
 		<p>
