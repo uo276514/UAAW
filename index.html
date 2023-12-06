@@ -40,12 +40,12 @@
 				// Recorrer cada página en el mapa del sitio
 				$(xml).find('page').each(function () {
 					var pageUrl = $(this).attr('url')
-					console.log(window.location.href)
-					console.log(pageUrl)
+					console.log("w.l.href", window.location.href)
+					console.log("pageUrl", pageUrl)
 					// Realizar una búsqueda en la página
 					$.ajax({
 						type: "GET",
-						url: pageUrl,
+						url: "https://uo276514.github.io"+pageUrl,
 						success: function (pageContent) {
 							console.log(window.location.href)
 							console.log(pageUrl)
