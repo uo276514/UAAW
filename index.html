@@ -31,6 +31,7 @@
 <script>
 	function search() {
 		var terminoBusqueda = $('#searchInput').val()
+		var files = 0
 		// Cargar el mapa del sitio desde el archivo XML
 		$.ajax({
 			type: "GET",
@@ -40,13 +41,14 @@
 				// Recorrer cada página en el mapa del sitio
 				$(xml).find('page').each(function () {
 					var pageUrl = $(this).attr('url')
-					console.log("w.l.href", window.location.href)
-					console.log("pageUrl", pageUrl)
+					console.log(window.location.href)
+					console.log(pageUrl)
 					// Realizar una búsqueda en la página
 					$.ajax({
 						type: "GET",
-						url: "https://uo276514.github.io"+pageUrl,
+						url: pageUrl,
 						success: function (pageContent) {
+							files++
 							console.log(window.location.href)
 							console.log(pageUrl)
 							// Realizar la búsqueda en el contenido de la página
@@ -54,10 +56,12 @@
 								console.log("Coincidencia encontrada en la página: " + pageUrl)
 								console.log(window.location.href)
 								console.log(pageUrl)
-								// newUrl = "http://localhost" + pageUrl
-								newUrl = "https://uo276514.github.io" + pageUrl
+								newUrl = "http://localhost" + pageUrl
+								// newUrl = "https://uo276514.github.io" + pageUrl
 								console.log(newUrl)
 								window.location.href = newUrl
+							} else if (files == 4) {
+								alert("Búsqueda no encontrada, prueba con palabras más concretas")
 							}
 						},
 						error: function (xhr, status, error) {
@@ -77,6 +81,7 @@
 	<header>
 		<h1>Jorge López Peláez</h1>
 		<div class="buscador">
+			<label for="searchInput"></label>
 			<input type="text" id="searchInput" placeholder="Buscar...">
 			<button onclick="search()">Buscar</button>
 		</div>

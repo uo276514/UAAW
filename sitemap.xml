@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemap>
-   <page url="/UAAW/index.html" />
-   <page url="/UAAW/aficiones.html" />
-   <page url="/UAAW/series.html" />
-   <page url="/UAAW/musica.html" />
-   <!-- <page url="/sitio_personal_v0/index.html" />
+   <page url="/sitio_personal_v0/index.html" />
    <page url="/sitio_personal_v0/aficiones.html" />
    <page url="/sitio_personal_v0/series.html" />
-   <page url="/sitio_personal_v0/musica.html" /> -->
+   <page url="/sitio_personal_v0/musica.html" />
+   <!-- <page url="/UAAW/index.html" />
+      <page url="/UAAW/aficiones.html" />
+      <page url="/UAAW/series.html" />
+      <page url="/UAAW/musica.html" /> -->
 </sitemap>
