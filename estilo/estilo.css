@@ -114,10 +114,8 @@ h2 {
 img {
 	padding: 0.5em;
 	border-radius: 4em;
-	/* width: 22.3rem;
-	height: 27rem; */
-	width: auto;
-	height: auto;
+	width: 22.3rem;
+	height: 27rem;
 }
 
 /* Especificidad: 001 */

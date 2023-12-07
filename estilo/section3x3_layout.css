@@ -29,3 +29,13 @@ picture:last-of-type {
 picture:last-of-type img:last-of-type {
 	border-radius: 0;
 }
+
+picture img {
+	width: 15rem;
+	height: 21rem;
+}
+
+picture:last-of-type img {
+	width: 53rem;
+	height: 15rem;
+}
